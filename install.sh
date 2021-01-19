@@ -139,12 +139,12 @@ ensure_perms
 
 if [ -d "$DOWNLOADED_TO/.git" ]; then
   execute \
-    "git_update $APPDIR" \
+    "git_update $DOWNLOADED_TO" \
     "Updating $APPNAME configurations"
 else
   execute \
     "backupapp && \
-        git_clone -q $REPO/$APPNAME $APPDIR" \
+        git_clone -q $REPO/$APPNAME $DOWNLOADED_TO" \
     "Installing $APPNAME configurations"
 fi
 
@@ -176,9 +176,9 @@ failexitcode
 
 run_postinst() {
   dfmgr_run_post
-  if [ ! -f "$DOWNLOADED_TO/qterminal.ini" ]; then
-    cp_rf "$DOWNLOADED_TO/qterminal.org.ini" "$DOWNLOADED_TO/qterminal.ini"
-    replace "$DOWNLOADED_TO/qterminal.ini" replacehome "$HOME"
+  if [ ! -f "$APPDIR/qterminal.ini" ]; then
+    ln_sf "$APPDIR/qterminal.org.ini" "$APPDIR/qterminal.ini"
+    replace "$APPDIR/qterminal.ini" replacehome "$HOME"
   fi
 }
 
