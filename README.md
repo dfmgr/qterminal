@@ -5,7 +5,7 @@ lightweight Qt-based terminal emulator
 Automatic install/update:
 
 ```shell
-bash -c "$(curl -LSs https://github.com/dfmgr/qterminal/raw/master/install.sh)"
+bash -c "$(curl -LSs https://github.com/dfmgr/qterminal/raw/main/install.sh)"
 ```
 
 Manual install:
